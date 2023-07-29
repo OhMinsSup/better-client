@@ -70,7 +70,9 @@ export default function Layout({ children }: Props) {
           fontHeading.variable
         )}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="relative flex min-h-screen flex-col">{children}</div>
+        </Providers>
       </body>
     </html>
   );

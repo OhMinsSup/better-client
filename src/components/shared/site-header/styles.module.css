@@ -1,0 +1,97 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  min-width: 100%;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.logo_container {
+  grid-column: span 4 / span 4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navigation_container {
+  display: none;
+  max-height: 40px;
+  flex: 1 1 0%;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.right_container {
+  grid-column: span 8 / span 8;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 100%;
+    min-width: 0px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .logo_container {
+    grid-column: span 2 / span 2;
+  }
+
+  .right_container {
+    grid-column: span 10 / span 10;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .logo_container {
+    grid-column: span 2 / span 2;
+  }
+
+  .navigation_container {
+    grid-column: span 7 / span 7;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .right_container {
+    grid-column: span 3 / span 3;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

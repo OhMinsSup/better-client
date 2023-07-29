@@ -9,7 +9,7 @@ import { Icons } from "~/components/shared/icons";
 export default function UserAuthForm() {
   const [isKakaoLoading, setIsKakaoLoading] = useState<boolean>(false);
   return (
-    <div className={cn("grid gap-6")}>
+    <div className={"grid gap-4"}>
       <form>
         <div className="grid gap-2">
           <div className="grid gap-1">
@@ -62,6 +62,21 @@ export default function UserAuthForm() {
           <Icons.Kakao className="mr-2 h-6 w-6" />
         )}{" "}
         카카오 로그인
+      </button>
+      <button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={() => {
+          setIsKakaoLoading(true);
+        }}
+        disabled={isKakaoLoading}
+      >
+        {isKakaoLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.plane className="mr-2 h-5 w-5" />
+        )}{" "}
+        게스트 로그인
       </button>
     </div>
   );

@@ -10,3 +10,38 @@ export const siteConfig = {
     github: "https://github.com/OhMinsSup",
   },
 };
+
+export type SiteMenuConfig = {
+  id: string;
+  href: string;
+  segment: string | null;
+  text: string;
+  hidden?: boolean;
+  disabled?: boolean;
+};
+
+export const siteMenuConfig = {
+  main: [
+    {
+      id: "link-1",
+      href: "/",
+      segment: null,
+      hidden: false,
+      text: "My Feed",
+    },
+    {
+      id: "link-2",
+      href: "/explore",
+      segment: "explore",
+      hidden: false,
+      text: "Explore",
+    },
+    {
+      id: "link-3",
+      href: "/bookmarks",
+      segment: "bookmarks",
+      hidden: false,
+      text: "Bookmarks",
+    },
+  ] as SiteMenuConfig[],
+};
