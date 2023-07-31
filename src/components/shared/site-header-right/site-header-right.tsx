@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.css";
 import { Button } from "~/components/ui/button";
 import { Icons } from "~/components/shared/icons";
-import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +9,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
+  DropdownMenuShortcut,
 } from "~/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 
 export default function SiteHeaderRight() {
   return (
@@ -22,7 +24,7 @@ export default function SiteHeaderRight() {
           size="icon"
           className={styles.btn_search}
         >
-          <Icons.search />
+          <Icons.search className="h-5 w-5" />
         </Button>
       </div>
       <div className={styles.create_container}>
@@ -35,27 +37,48 @@ export default function SiteHeaderRight() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button aria-label="Profile Dropdown" type="button">
-              <div className={styles.user_profile}>
-                <Image
-                  width={40}
-                  height={40}
-                  src="https://velog.velcdn.com/thumbnails/veloss/43c665f0-b44c-11e8-b8f5-49cedc880031-DHxDbYmUwAASvCI.png"
-                  alt="user profile image"
-                />
-              </div>
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
             </button>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent
+            className="w-56"
             align="end"
-            sideOffset={10}
+            forceMount
             data-navigation-user-menu
           >
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel className="font-normal">
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">shadcn</p>
+                <p className="text-xs leading-none text-muted-foreground">
+                  m@example.com
+                </p>
+              </div>
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Team</DropdownMenuItem>
-            <DropdownMenuItem>Subscription</DropdownMenuItem>
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                Profile
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Billing
+                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Settings
+                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>New Team</DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              Log out
+              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

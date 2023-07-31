@@ -6,6 +6,7 @@ import Link from "next/link";
 import { cn } from "~/utils/util";
 import { NavigationLink } from "~/components/shared/navigation-link";
 import { SiteHeaderRight } from "~/components/shared/site-header-right";
+import { Button } from "~/components/ui/button";
 
 export default function SiteHeader() {
   return (
@@ -13,7 +14,15 @@ export default function SiteHeader() {
       <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
         <div className="flex w-full py-4 min-h-[73px]">
           <div className={styles.container}>
-            <div className={styles.logo_container}>
+            <div className={cn(styles.logo_container, "gap-x-3")}>
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                className="w-8 h-8 xl:hidden"
+              >
+                <Icons.menu className="h-4 w-4" />
+              </Button>
               <Link
                 href="/"
                 aria-label="Better Logo"

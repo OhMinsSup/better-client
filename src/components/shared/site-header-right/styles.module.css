@@ -15,21 +15,12 @@
   display: none;
 }
 
-.user_profile {
-  position: relative;
-  display: block;
-  height: 100%;
-  width: 100%;
-  border-radius: 9999px;
-  @apply bg-slate-100;
-}
-
 @media (min-width: 768px) {
   .create_container {
     display: block;
   }
 
   .btn_search {
-    display: inline;
+    display: inline-flex;
   }
 }
