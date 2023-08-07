@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useReducer } from "react";
 import { createContext } from "~/libs/react/context";
 
