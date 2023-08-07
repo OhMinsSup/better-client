@@ -16,6 +16,7 @@ import {
   DropdownMenuPortal,
   DropdownMenuShortcut,
 } from "~/components/ui/dropdown-menu";
+import { PlaceEditDialog } from "../place-edit-dialog";
 
 export default function EditHeader() {
   const router = useRouter();
@@ -29,17 +30,12 @@ export default function EditHeader() {
       <div className="mx-auto grid grid-cols-12">
         <div className="col-span-6">
           <Button type="button" variant="ghost" onClick={onClickBack} size="sm">
-            <Icons.chevronLeft className="mr-2 h-4 w-4" />
-            뒤로가기
+            <Icons.chevronLeft className="sm:mr-2 h-4 w-4" />
+            <span className="hidden sm:block">뒤로가기</span>
           </Button>
         </div>
         <div className="col-span-6 relative flex flex-row justify-end">
           <div className="flex justify-center items-center space-x-3">
-            <Button type="button" size="sm">
-              <Icons.add className="h-4 w-4 mr-2" />
-              <span>등록하기</span>
-            </Button>
-            <div className="w-px h-5 bg-gray-200" />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button size="icon" variant="outline">
@@ -63,26 +59,13 @@ export default function EditHeader() {
                         <span className="truncate">다른 이름으로 저장</span>
                         <DropdownMenuShortcut>⌘⇧S</DropdownMenuShortcut>
                       </DropdownMenuItem>
-                      {/* <DropdownMenuSub>
-                        <DropdownMenuSubTrigger disabled>
-                          내보내기
-                        </DropdownMenuSubTrigger>
-                        <DropdownMenuPortal>
-                          <DropdownMenuSubContent>
-                            <DropdownMenuItem>
-                              <span className="truncate">JSON</span>
-                            </DropdownMenuItem>
-                          </DropdownMenuSubContent>
-                        </DropdownMenuPortal>
-                      </DropdownMenuSub> */}
                     </DropdownMenuSubContent>
                   </DropdownMenuPortal>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    장소 추가
-                    <DropdownMenuShortcut>⌘M</DropdownMenuShortcut>
+                    나의 장소 <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     임시저장 <DropdownMenuShortcut>⌘T</DropdownMenuShortcut>
@@ -90,6 +73,12 @@ export default function EditHeader() {
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
+            <div className="w-px h-5 bg-gray-200" />
+            <PlaceEditDialog />
+            <Button type="button" size="sm">
+              <Icons.add className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:block">등록하기</span>
+            </Button>
           </div>
         </div>
       </div>
