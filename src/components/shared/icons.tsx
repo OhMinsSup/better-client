@@ -29,6 +29,9 @@ import {
   Search,
   Eye,
   MoreVerticalIcon,
+  Map,
+  Pin,
+  GitFork,
 } from "lucide-react";
 
 export const Icons = {
@@ -59,6 +62,9 @@ export const Icons = {
   eye: Eye,
   heart: Heart,
   moreVertical: MoreVerticalIcon,
+  map: Map,
+  pin: Pin,
+  gitHubFork: GitFork,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

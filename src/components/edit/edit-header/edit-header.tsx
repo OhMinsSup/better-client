@@ -7,15 +7,14 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   DropdownMenuItem,
-  DropdownMenuShortcut,
-  DropdownMenuPortal,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal,
+  DropdownMenuShortcut,
 } from "~/components/ui/dropdown-menu";
 
 export default function EditHeader() {
@@ -47,57 +46,48 @@ export default function EditHeader() {
                   <Icons.moreVertical className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuContent className="w-60" align="end">
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>파일</DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent className="min-w-[210px]">
+                      <DropdownMenuItem>
+                        <span className="truncate">열기</span>
+                        <DropdownMenuShortcut>⌘O</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <span className="truncate">저장</span>
+                        <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <span className="truncate">다른 이름으로 저장</span>
+                        <DropdownMenuShortcut>⌘⇧S</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      {/* <DropdownMenuSub>
+                        <DropdownMenuSubTrigger disabled>
+                          내보내기
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuPortal>
+                          <DropdownMenuSubContent>
+                            <DropdownMenuItem>
+                              <span className="truncate">JSON</span>
+                            </DropdownMenuItem>
+                          </DropdownMenuSubContent>
+                        </DropdownMenuPortal>
+                      </DropdownMenuSub> */}
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    Profile
-                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                    장소 추가
+                    <DropdownMenuShortcut>⌘M</DropdownMenuShortcut>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    Billing
-                    <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    Settings
-                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    Keyboard shortcuts
-                    <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                    임시저장 <DropdownMenuShortcut>⌘T</DropdownMenuShortcut>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>Team</DropdownMenuItem>
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      Invite users
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuPortal>
-                      <DropdownMenuSubContent>
-                        <DropdownMenuItem>Email</DropdownMenuItem>
-                        <DropdownMenuItem>Message</DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>More...</DropdownMenuItem>
-                      </DropdownMenuSubContent>
-                    </DropdownMenuPortal>
-                  </DropdownMenuSub>
-                  <DropdownMenuItem>
-                    New Team
-                    <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>GitHub</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
-                <DropdownMenuItem disabled>API</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  Log out
-                  <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

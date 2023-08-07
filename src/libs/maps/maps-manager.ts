@@ -1,3 +1,4 @@
+import omit from "lodash-es/omit";
 import type { SetOptions } from "./maps-types";
 
 export class MapsManager {
@@ -5,10 +6,16 @@ export class MapsManager {
 
   private _maps: kakao.maps.Map | null = null;
 
-  constructor() {}
+  private _options: Omit<SetOptions, "element"> | undefined;
 
-  setOptions(opts: SetOptions) {
+  setOptions(opts: Pick<SetOptions, "element"> & Partial<SetOptions>) {
     this._$element = opts.element;
+
+    if (!opts.center) {
+      opts.center = new kakao.maps.LatLng(33.450701, 126.570667);
+    }
+
+    this._options = omit(opts, "element") as Omit<SetOptions, "element">;
   }
 
   makeMap() {
@@ -20,10 +27,11 @@ export class MapsManager {
       return;
     }
 
-    this._maps = new kakao.maps.Map(this._$element, {
-      center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-      level: 3, // 지도의 확대 레벨
-    });
+    if (!this._options) {
+      return;
+    }
+
+    this._maps = new kakao.maps.Map(this._$element, this._options);
   }
 
   clear() {
