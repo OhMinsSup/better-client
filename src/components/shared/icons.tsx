@@ -28,6 +28,7 @@ import {
   Menu,
   Search,
   Eye,
+  MoreVerticalIcon,
 } from "lucide-react";
 
 export const Icons = {
@@ -57,6 +58,7 @@ export const Icons = {
   menu: Menu,
   eye: Eye,
   heart: Heart,
+  moreVertical: MoreVerticalIcon,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

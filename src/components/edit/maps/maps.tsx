@@ -23,5 +23,5 @@ export default function Maps() {
     };
   }, []);
 
-  return <div className="w-full h-full rounded-md" ref={$ele} />;
+  return <div className="w-full h-[calc(100vh-15px)] rounded-md" ref={$ele} />;
 }

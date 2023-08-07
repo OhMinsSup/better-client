@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <>
       <EditHeader />
-      <div className="px-4 w-full h-screen">
+      <div className="px-4 pb-4 w-full min-h-screen">
         <ScriptsKakaoMap fallback={<>Loading....</>}>
           <Maps />
         </ScriptsKakaoMap>
