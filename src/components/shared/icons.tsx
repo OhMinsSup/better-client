@@ -24,8 +24,10 @@ import {
   User,
   X,
   Plane,
+  Heart,
   Menu,
   Search,
+  Eye,
 } from "lucide-react";
 
 export const Icons = {
@@ -53,6 +55,8 @@ export const Icons = {
   plane: Plane,
   search: Search,
   menu: Menu,
+  eye: Eye,
+  heart: Heart,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
@@ -70,7 +74,7 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  Kakao: ({ ...props }: LucideProps) => (
+  kakao: ({ ...props }: LucideProps) => (
     <svg
       aira-hidden="true"
       focusable="false"

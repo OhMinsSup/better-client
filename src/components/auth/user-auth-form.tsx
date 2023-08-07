@@ -59,7 +59,7 @@ export default function UserAuthForm() {
         {isKakaoLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.Kakao className="mr-2 h-6 w-6" />
+          <Icons.kakao className="mr-2 h-6 w-6" />
         )}{" "}
         카카오 로그인
       </button>
