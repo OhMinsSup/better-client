@@ -1,17 +1,24 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useGeolocated } from "react-geolocated";
 import { getTargetElement } from "~/libs/browser/dom";
-import { MapsManager } from "~/libs/maps";
+import { Toolbar } from "~/components/edit/toolbar";
+import { useMapEditContext } from "~/libs/providers/map-edit-provider";
 
 export default function Maps() {
   const $ele = useRef<HTMLDivElement | null>(null);
-  const [mapClient] = useState(() => new MapsManager());
+  const { $mapClient } = useMapEditContext();
 
-  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
+  const { coords, isGeolocationAvailable, isGeolocationEnabled, getPosition } =
     useGeolocated({
       userDecisionTimeout: 5000,
     });
+
+  const triggerPosition = useCallback(() => {
+    if (coords) {
+      $mapClient?.moveCurrentPosition(coords);
+    }
+  }, [$mapClient, coords]);
 
   useEffect(() => {
     const element = getTargetElement($ele);
@@ -22,22 +29,28 @@ export default function Maps() {
       coords instanceof GeolocationCoordinates
     ) {
       if (element) {
-        mapClient.setOptions({
+        $mapClient.setOptions({
           element: element,
           center: new kakao.maps.LatLng(coords.latitude, coords.longitude),
         });
 
-        mapClient.makeMap();
+        $mapClient.makeMap();
       }
     }
 
     return () => {
-      mapClient.clear();
+      $mapClient.clear();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isGeolocationAvailable, isGeolocationEnabled, coords]);
 
   return (
-    <div className="w-full h-[calc(100vh-15px)] rounded-md border" ref={$ele} />
+    <>
+      <Toolbar triggerPosition={triggerPosition} />
+      <div
+        className="w-full h-[calc(100vh-15px)] rounded-md border"
+        ref={$ele}
+      />
+    </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useMemo, useReducer } from "react";
 import { createContext } from "~/libs/react/context";
+import { MapsManager } from "~/libs/maps";
 
 export enum Action {
   CLEAR = "CLEAR",
@@ -12,14 +13,18 @@ type ClearAction = {
 
 export type ActionType = ClearAction;
 
-interface MapEditState {}
+interface MapEditState {
+  $mapClient: MapsManager;
+}
 
 interface MapEditContext extends MapEditState {
   clear: () => void;
   dispatch: React.Dispatch<ActionType>;
 }
 
-const initialState: MapEditState = {};
+const initialState: MapEditState = {
+  $mapClient: new MapsManager(),
+};
 
 const [MapEditProvider, useMapEditContext] = createContext<MapEditContext>({
   name: "useMapEditContext",

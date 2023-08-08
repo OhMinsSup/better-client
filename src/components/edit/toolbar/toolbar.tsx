@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react";
 import { Button } from "~/components/ui/button";
 import { Icons } from "~/components/shared/icons";
 import { PlaceEditDialog } from "~/components/edit/place-edit-dialog";
@@ -11,8 +11,27 @@ import {
 } from "~/components/ui/tooltip";
 import { PlaceSearchDialog } from "~/components/edit/place-search-dialog";
 import { PlaceListDialog } from "~/components/edit/place-list-dialog";
+import { useMapEditContext } from "~/libs/providers/map-edit-provider";
 
-export default function Toolbar() {
+interface ToolbarProps {
+  triggerPosition: () => void;
+}
+
+export default function Toolbar({ triggerPosition }: ToolbarProps) {
+  const { $mapClient } = useMapEditContext();
+
+  const onClickMapPlus = useCallback(() => {
+    $mapClient.zoomIn();
+  }, [$mapClient]);
+
+  const onClickMapMinus = useCallback(() => {
+    $mapClient.zoomOut();
+  }, [$mapClient]);
+
+  const onClickLocate = useCallback(() => {
+    triggerPosition();
+  }, [triggerPosition]);
+
   return (
     <div className="fixed z-[50] right-[35px] pt-5 pb-5">
       <div className="flex flex-col space-y-2">
@@ -25,6 +44,7 @@ export default function Toolbar() {
             size="icon"
             variant="outline"
             className="rounded-none rounded-t-lg"
+            onClick={onClickMapPlus}
           >
             <Icons.add className="h-4 w-4" />
           </Button>
@@ -33,6 +53,7 @@ export default function Toolbar() {
             size="icon"
             variant="outline"
             className="rounded-none rounded-b-lg"
+            onClick={onClickMapMinus}
           >
             <Icons.minus className="h-4 w-4" />
           </Button>
@@ -45,6 +66,7 @@ export default function Toolbar() {
                 size="icon"
                 variant="outline"
                 className="shadow-md"
+                onClick={onClickLocate}
               >
                 <Icons.locateFixed className="h-4 w-4" />
               </Button>
