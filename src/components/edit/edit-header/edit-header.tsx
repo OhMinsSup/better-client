@@ -74,10 +74,8 @@ export default function EditHeader() {
               </DropdownMenuContent>
             </DropdownMenu>
             <div className="w-px h-5 bg-gray-200" />
-            <PlaceEditDialog />
             <Button type="button" size="sm">
-              <Icons.add className="h-4 w-4 sm:mr-2" />
-              <span className="hidden sm:block">등록하기</span>
+              등록하기
             </Button>
           </div>
         </div>

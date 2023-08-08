@@ -184,6 +184,9 @@ devDependencies:
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
+  tailwindcss-radix:
+    specifier: ^2.8.0
+    version: 2.8.0
   tsup:
     specifier: ^7.2.0
     version: 7.2.0(@swc/core@1.3.74)(postcss@8.4.27)(typescript@5.1.6)
@@ -10164,6 +10167,10 @@ packages:
     dependencies:
       tailwindcss: 3.3.3
     dev: false
+
+  /tailwindcss-radix@2.8.0:
+    resolution: {integrity: sha512-1k1UfoIYgVyBl13FKwwoKavjnJ5VEaUClCTAsgz3VLquN4ay/lyaMPzkbqD71sACDs2fRGImytAUlMb4TzOt1A==}
+    dev: true
 
   /tailwindcss@3.3.3:
     resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}

@@ -8,12 +8,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
 
-interface PlaceEditDialogProps {}
+interface PlaceSearchDialogProps {}
 
-export default function PlaceEditDialog(props: PlaceEditDialogProps) {
+export default function PlaceSearchDialog(props: PlaceSearchDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,12 +21,12 @@ export default function PlaceEditDialog(props: PlaceEditDialogProps) {
           variant="outline"
           className="shadow-md"
         >
-          <Icons.pin className="h-4 w-4" />
+          <Icons.search className="h-4 w-4" />
         </Button>
       </DialogTrigger>
       <DialogContent className="h-full md:h-fit">
         <DialogHeader>
-          <DialogTitle>장소 추가</DialogTitle>
+          <DialogTitle>검색</DialogTitle>
         </DialogHeader>
       </DialogContent>
     </Dialog>

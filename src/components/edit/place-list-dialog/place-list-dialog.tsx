@@ -11,9 +11,9 @@ import {
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 
-interface PlaceEditDialogProps {}
+interface PlaceListDialogProps {}
 
-export default function PlaceEditDialog(props: PlaceEditDialogProps) {
+export default function PlaceListDialog(props: PlaceListDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,12 +23,12 @@ export default function PlaceEditDialog(props: PlaceEditDialogProps) {
           variant="outline"
           className="shadow-md"
         >
-          <Icons.pin className="h-4 w-4" />
+          <Icons.calendarRange className="h-4 w-4" />
         </Button>
       </DialogTrigger>
       <DialogContent className="h-full md:h-fit">
         <DialogHeader>
-          <DialogTitle>장소 추가</DialogTitle>
+          <DialogTitle>나의 장소</DialogTitle>
         </DialogHeader>
       </DialogContent>
     </Dialog>

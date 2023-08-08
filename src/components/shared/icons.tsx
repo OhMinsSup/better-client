@@ -31,7 +31,10 @@ import {
   MoreVerticalIcon,
   Map,
   Pin,
+  Minus,
   GitFork,
+  LocateFixed,
+  CalendarRange,
 } from "lucide-react";
 
 export const Icons = {
@@ -48,6 +51,7 @@ export const Icons = {
   billing: CreditCard,
   ellipsis: MoreVertical,
   add: Plus,
+  minus: Minus,
   warning: AlertTriangle,
   user: User,
   arrowRight: ArrowRight,
@@ -65,6 +69,8 @@ export const Icons = {
   map: Map,
   pin: Pin,
   gitHubFork: GitFork,
+  locateFixed: LocateFixed,
+  calendarRange: CalendarRange,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
