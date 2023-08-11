@@ -47,10 +47,10 @@ export default function Maps() {
   return (
     <>
       <Toolbar triggerPosition={triggerPosition} />
-      <div
+      {/* <div
         className="w-full h-[calc(100vh-15px)] rounded-md border"
         ref={$ele}
-      />
+      /> */}
     </>
   );
 }
