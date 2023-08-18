@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Icons } from "~/components/shared/icons";
 import { Button } from "~/components/ui/button";
@@ -24,7 +25,7 @@ export default function PlaceSearchDialog(props: PlaceSearchDialogProps) {
           variant="outline"
           className="shadow-md"
         >
-          <Icons.search className="h-4 w-4" />
+          <Icons.map className="h-4 w-4" />
         </Button>
       </DialogTrigger>
       <DialogContent className="h-full">
@@ -66,10 +67,10 @@ PlaceSearchDialog.Item = function PlaceSearchDialogItem({
         </div>
       </div>
       <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-        <p className="text-sm leading-6 text-gray-900">
+        <p className="text-sm leading-6 text-gray-900">{place.category_name}</p>
+        <p className="mt-1 text-xs leading-5 text-gray-500">
           {place.category_group_name}
         </p>
-        <p className="mt-1 text-xs leading-5 text-gray-500">{place.distance}</p>
       </div>
     </li>
   );

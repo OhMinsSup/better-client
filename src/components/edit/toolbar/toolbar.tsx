@@ -2,7 +2,6 @@
 import React, { useCallback } from "react";
 import { Button } from "~/components/ui/button";
 import { Icons } from "~/components/shared/icons";
-import { PlaceEditDialog } from "~/components/edit/place-edit-dialog";
 import {
   Tooltip,
   TooltipContent,
@@ -35,7 +34,6 @@ export default function Toolbar({ triggerPosition }: ToolbarProps) {
   return (
     <div className="fixed z-[50] right-[35px] pt-5 pb-5">
       <div className="flex flex-col space-y-2">
-        <PlaceEditDialog />
         <PlaceListDialog />
         <PlaceSearchDialog />
         <div className="shadow-md flex flex-col">

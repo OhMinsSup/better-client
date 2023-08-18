@@ -48,6 +48,8 @@
     "@t3-oss/env-nextjs": "^0.6.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dexie": "^3.2.4",
+    "dexie-react-hooks": "^1.1.6",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.268.0",
     "modern-errors": "^6.0.0",

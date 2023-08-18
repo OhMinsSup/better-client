@@ -1,7 +1,7 @@
 import omit from "lodash-es/omit";
+import { MarkerMnanger } from "./marker-manager";
 import { MapUnknownError } from "../errors/maps-error";
 import type { MoveCurrentPositionParams, SetOptions } from "./maps-types";
-import { MarkerMnanger } from "./marker-manager";
 
 export class MapsManager {
   private _$element: HTMLElement | null = null;
