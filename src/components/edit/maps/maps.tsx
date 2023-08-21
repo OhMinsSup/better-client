@@ -29,17 +29,17 @@ export default function Maps() {
       coords instanceof GeolocationCoordinates
     ) {
       if (element) {
-        $mapClient.setOptions({
+        $mapClient?.setOptions({
           element: element,
           center: new kakao.maps.LatLng(coords.latitude, coords.longitude),
         });
 
-        $mapClient.makeMap();
+        $mapClient?.makeMap();
       }
     }
 
     return () => {
-      $mapClient.clear();
+      $mapClient?.clear();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isGeolocationAvailable, isGeolocationEnabled, coords]);
@@ -47,10 +47,10 @@ export default function Maps() {
   return (
     <>
       <Toolbar triggerPosition={triggerPosition} />
-      <div
+      {/* <div
         className="w-full h-[calc(100vh-15px)] rounded-md border"
         ref={$ele}
-      />
+      /> */}
     </>
   );
 }

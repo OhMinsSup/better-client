@@ -15,3 +15,9 @@ export type MoveCurrentPositionParams =
   | kakao.maps.Coords
   | kakao.maps.LatLngBounds
   | GeolocationCoordinates;
+
+export type MapKey = {
+  key: string;
+  used: boolean;
+  timestamp?: number;
+};

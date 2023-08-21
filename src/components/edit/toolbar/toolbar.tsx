@@ -20,11 +20,11 @@ export default function Toolbar({ triggerPosition }: ToolbarProps) {
   const { $mapClient } = useMapEditContext();
 
   const onClickMapPlus = useCallback(() => {
-    $mapClient.zoomIn();
+    $mapClient?.zoomIn();
   }, [$mapClient]);
 
   const onClickMapMinus = useCallback(() => {
-    $mapClient.zoomOut();
+    $mapClient?.zoomOut();
   }, [$mapClient]);
 
   const onClickLocate = useCallback(() => {

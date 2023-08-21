@@ -4,6 +4,10 @@ import { MapUnknownError } from "../errors/maps-error";
 import type { MoveCurrentPositionParams, SetOptions } from "./maps-types";
 
 export class MapsManager {
+  private _key: string | null = null;
+
+  private _index: number = 0;
+
   private _$element: HTMLElement | null = null;
 
   private _maps: kakao.maps.Map | null = null;
@@ -11,6 +15,14 @@ export class MapsManager {
   private _options: Omit<SetOptions, "element"> | null = null;
 
   private _markerManager: MarkerMnanger | null = null;
+
+  constructor(key: string) {
+    this._key = key;
+  }
+
+  setIndex(index: number) {
+    this._index = index;
+  }
 
   setOptions(opts: Pick<SetOptions, "element"> & Partial<SetOptions>) {
     this._$element = opts.element;
@@ -60,6 +72,9 @@ export class MapsManager {
     if (this._markerManager) {
       this._markerManager = null;
     }
+
+    this._index = 0;
+    this._key = null;
   }
 
   zoomIn() {
@@ -112,6 +127,14 @@ export class MapsManager {
 
       this._maps.panTo(moveLatLon);
     }
+  }
+
+  public get $key() {
+    return this._key;
+  }
+
+  public get $index() {
+    return this._index;
   }
 
   public get $maps() {

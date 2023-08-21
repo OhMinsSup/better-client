@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useReducer } from "react";
 import { createContext } from "~/libs/react/context";
-import { MapsManager } from "~/libs/maps";
+import { MapsManagers } from "../maps/maps-managers";
 
 export enum Action {
   CLEAR = "CLEAR",
@@ -13,22 +13,22 @@ type ClearAction = {
 
 export type ActionType = ClearAction;
 
-interface MapEditState {
-  $mapClient: MapsManager | undefined;
+interface MapState {
+  $managers: MapsManagers;
 }
 
-interface MapEditContext extends MapEditState {
+interface MapContext extends MapState {
   clear: () => void;
   dispatch: React.Dispatch<ActionType>;
 }
 
-const initialState: MapEditState = {
-  $mapClient: undefined,
+const initialState: MapState = {
+  $managers: new MapsManagers(),
 };
 
-const [MapEditProvider, useMapEditContext] = createContext<MapEditContext>({
-  name: "useMapEditContext",
-  errorMessage: "useMapEditContext: `context` is undefined.",
+const [MapProvider, useMapContext] = createContext<MapContext>({
+  name: "useMapContext",
+  errorMessage: "useMapContext: `context` is undefined.",
   defaultValue: initialState,
 });
 
@@ -42,15 +42,11 @@ function reducer(state = initialState, action: ActionType) {
 }
 
 interface Props {
-  $mapClient: MapsManager | undefined;
   children: React.ReactNode;
 }
 
-function Provider({ children, $mapClient }: Props) {
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
-    $mapClient,
-  });
+function Provider({ children }: Props) {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const clear = () => dispatch({ type: Action.CLEAR });
 
@@ -63,7 +59,7 @@ function Provider({ children, $mapClient }: Props) {
     [state]
   );
 
-  return <MapEditProvider value={actions}>{children}</MapEditProvider>;
+  return <MapProvider value={actions}>{children}</MapProvider>;
 }
 
-export { Provider, useMapEditContext };
+export { Provider, useMapContext };

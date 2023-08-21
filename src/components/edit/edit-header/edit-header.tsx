@@ -16,7 +16,6 @@ import {
   DropdownMenuPortal,
   DropdownMenuShortcut,
 } from "~/components/ui/dropdown-menu";
-import { PlaceEditDialog } from "../place-edit-dialog";
 
 export default function EditHeader() {
   const router = useRouter();
