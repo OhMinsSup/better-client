@@ -58,6 +58,10 @@ export class MapsManagers {
     this._currentKey = lastKey || null;
   }
 
+  changeKey(key: string) {
+    this._currentKey = key;
+  }
+
   clear() {
     this._managers.forEach((manager) => manager.clear());
     this._managers.clear();

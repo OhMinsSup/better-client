@@ -16,13 +16,23 @@ import {
   DropdownMenuPortal,
   DropdownMenuShortcut,
 } from "~/components/ui/dropdown-menu";
+import { useMapContext } from "~/libs/providers/map-provider";
+import { generateUUID } from "~/utils/util";
 
 export default function EditHeader() {
   const router = useRouter();
 
+  const { $managers, forceUpdate } = useMapContext();
+
   const onClickBack = useCallback(() => {
     router.back();
   }, [router]);
+
+  const onApplySchedule = useCallback(() => {
+    const uuid = generateUUID();
+    $managers.add(uuid);
+    forceUpdate();
+  }, [$managers, forceUpdate]);
 
   return (
     <div className="sticky top-0 left-0 z-50 px-4 py-4 2xl:px-5 bg-white backdrop-blur-sm">
@@ -63,8 +73,9 @@ export default function EditHeader() {
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    나의 장소 <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
+                  <DropdownMenuItem onClick={onApplySchedule}>
+                    일정 추가하기{" "}
+                    <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     임시저장 <DropdownMenuShortcut>⌘T</DropdownMenuShortcut>

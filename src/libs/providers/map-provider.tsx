@@ -5,24 +5,32 @@ import { MapsManagers } from "../maps/maps-managers";
 
 export enum Action {
   CLEAR = "CLEAR",
+  FORCE_UPDATE = "FORCE_UPDATE",
 }
 
 type ClearAction = {
   type: Action.CLEAR;
 };
 
-export type ActionType = ClearAction;
+type ForceUpdateAction = {
+  type: Action.FORCE_UPDATE;
+};
+
+export type ActionType = ClearAction | ForceUpdateAction;
 
 interface MapState {
+  updated: Record<string, unknown>;
   $managers: MapsManagers;
 }
 
 interface MapContext extends MapState {
   clear: () => void;
+  forceUpdate: () => void;
   dispatch: React.Dispatch<ActionType>;
 }
 
 const initialState: MapState = {
+  updated: {},
   $managers: new MapsManagers(),
 };
 
@@ -36,6 +44,11 @@ function reducer(state = initialState, action: ActionType) {
   switch (action.type) {
     case Action.CLEAR:
       return initialState;
+    case Action.FORCE_UPDATE:
+      return {
+        ...state,
+        updated: {},
+      };
     default:
       return state;
   }
@@ -50,10 +63,13 @@ function Provider({ children }: Props) {
 
   const clear = () => dispatch({ type: Action.CLEAR });
 
+  const forceUpdate = () => dispatch({ type: Action.FORCE_UPDATE });
+
   const actions = useMemo(
     () => ({
       ...state,
       clear,
+      forceUpdate,
       dispatch,
     }),
     [state]

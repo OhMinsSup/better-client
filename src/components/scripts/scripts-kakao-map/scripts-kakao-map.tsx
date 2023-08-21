@@ -21,6 +21,7 @@ export default function ScriptKakaoMap({
         strategy="afterInteractive"
         src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false`}
         onLoad={() => {
+          console.log("kakao map loaded");
           window.kakao.maps.load(() => {
             setLoaded(true);
           });
