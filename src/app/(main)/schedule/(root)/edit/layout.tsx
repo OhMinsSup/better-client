@@ -55,42 +55,28 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <EditHeader />
-      {tabs.length > 1 ? (
-        <Tabs
-          className="space-y-4 px-4 pb-4"
-          value={currentTab}
-          onValueChange={onChangeTab}
-        >
-          <TabsList>
-            {tabs.map((tab, index) => (
-              <TabsTrigger key={tab.key} value={tab.key}>
-                나의 {`${index + 1}일`}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          {tabs.map((tab) => (
-            <TabsContent key={tab.key} value={tab.key}>
-              <div className="w-full min-h-screen">
-                <MapEditProvider $mapClient={$managers.get(tab.key)}>
-                  {children}
-                </MapEditProvider>
-              </div>
-            </TabsContent>
+      <Tabs
+        className="space-y-4 px-4 pb-4"
+        value={currentTab}
+        onValueChange={onChangeTab}
+      >
+        <TabsList>
+          {tabs.map((tab, index) => (
+            <TabsTrigger key={tab.key} value={tab.key}>
+              나의 {`${index + 1}일`}
+            </TabsTrigger>
           ))}
-        </Tabs>
-      ) : (
-        <>
-          {tabs.map((tab) => (
-            <React.Fragment key={tab.key}>
-              <div className="px-4 pb-4 w-full min-h-screen">
-                <MapEditProvider $mapClient={$managers.get(tab.key)}>
-                  {children}
-                </MapEditProvider>
-              </div>
-            </React.Fragment>
-          ))}
-        </>
-      )}
+        </TabsList>
+        {tabs.map((tab) => (
+          <TabsContent key={tab.key} value={tab.key}>
+            <div className="w-full min-h-screen">
+              <MapEditProvider $mapClient={$managers.get(tab.key)}>
+                {children}
+              </MapEditProvider>
+            </div>
+          </TabsContent>
+        ))}
+      </Tabs>
     </>
   );
 }

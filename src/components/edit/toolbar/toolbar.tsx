@@ -8,8 +8,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
-import { PlaceSearchDialog } from "~/components/edit/place-search-dialog";
-import { PlaceListDialog } from "~/components/edit/place-list-dialog";
 import { useMapEditContext } from "~/libs/providers/map-edit-provider";
 
 interface ToolbarProps {
@@ -32,10 +30,8 @@ export default function Toolbar({ triggerPosition }: ToolbarProps) {
   }, [triggerPosition]);
 
   return (
-    <div className="fixed z-[50] right-[35px] pt-5 pb-5">
+    <div className="fixed z-[50] left-[35px] pt-5 pb-5">
       <div className="flex flex-col space-y-2">
-        <PlaceListDialog />
-        <PlaceSearchDialog />
         <div className="shadow-md flex flex-col">
           <Button
             type="button"
